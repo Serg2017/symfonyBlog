@@ -17,9 +17,16 @@ class BlogController extends Controller
         $em = $this->get('doctrine.orm.default_entity_manager');
         $blogRepository = $em->getRepository('BlogBundle:Blog');
         $blogs = $blogRepository->findAll();
+        //KNP Pagination
+        $paginator  = $this->get('knp_paginator');
+        $blogPagination = $paginator->paginate(
+            $blogs,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 4)
+        );
 
         return $this->render('BlogBundle:Blog:index.html.twig', [
-            'blogs' => $blogs,
+            'blogPagination' => $blogPagination,
         ]);
     }
 
