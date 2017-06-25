@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            width: 960px;
+        }
+        .header {
+            border: 1px solid #000;
+            margin-bottom: 10px;
+        }
+
+        .header__logo {
+            padding: 5px 10px;
+        }
+
+        .sidebar {
+            width: 200px;
+            float: left;
+            border: 1px solid #000;
+        }
+
+        .content {
+            border: 1px solid #000;
+            margin-left: 210px;
+        }
+
+        .footer {
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+
+        .footer__text {
+            text-align: center;
+        }
+
+        /*CLEAR*/
+        .content:after {
+            content: "."; /*не пустой для Opera это важно :)*/
+            display: block;
+            clear: both; /*очищаем обтекаемость*/
+            visibility: hidden; /*не отображаем*/
+            line-height: 0; /*высоту блока и строки сводим на ноль, чтобы не было видно этого блока*/
+            height: 0;
+        }
+
+        .button-add {
+            display: inline-block;
+            background-color: #cbcbcb;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px
+        }
+
+        table {
+            margin: 10px;
+        }
+        td {
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header"><div class="header__logo">Blog</div></div>
+    <div class="sidebar">
+        <ul class="nav">
+            <li class="nav__item"><a href="{{ path("admin") }}">Главная</a></li>
+            <li class="nav__item"><a href="{{ path("adminBlogs") }}">Блоги</a></li>
+            {#<li class="nav__item"><a href="{{ path("abouts") }}">О Нас</a></li>#}
+        </ul>
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="footer"><p class="footer__text">2017 Blog</p></div>
+</div>
+</body>
+</html>

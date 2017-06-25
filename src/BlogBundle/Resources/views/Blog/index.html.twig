@@ -1,0 +1,25 @@
+{% extends "BlogBundle::layout.html.twig" %}
+
+{% block title %}
+    Blog Posts
+{% endblock %}
+
+{% block content %}
+    {% for blog in blogs %}
+        <a href="{{ path("blogView", {"id" : blog.id}) }}">{{ blog.title }}</a><br>
+    {% endfor %}
+
+
+   {# <ul class="pagination">
+        {% if pagination.page > 1 %}
+            <li class="page prev"><a href="{{ path([pagination.url], {'page':pagination.page-1}) }}">Prev</a></li>
+        {% endif %}
+        {% if pagination.page > 1 %}
+            <li class="page current">{{ pagination.page }}</li>
+        {% endif %}
+        {% if pagination.page == pagination.total %}
+            <li class="page next">Next</li>
+        {% endif %}
+    </ul>#}
+
+{% endblock %}

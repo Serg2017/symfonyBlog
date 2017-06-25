@@ -1,0 +1,23 @@
+{% extends "BlogBundle::admin_layout.html.twig" %}
+
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path("adminBlogAdd") }}" class="button-add">Add Post</a>
+    <table border="1">
+        <tr>
+            <th>Title Post</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for blog in blogs %}
+           <tr>
+               <td>{{ blog.title }}</td>
+               <td><a href="{{ path("adminBlogEdit", {"id" : blog.id}) }}">Edit</a></td>
+               <td><a href="{{ path("adminBlogDelete", {"id" : blog.id}) }}">Delete</a></td>
+           </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
